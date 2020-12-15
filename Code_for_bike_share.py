@@ -1,3 +1,5 @@
+# By: Faisal Algahtani
+
 import time
 import pandas as pd
 import numpy as np
@@ -17,7 +19,7 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    
+
     print('-'*40)
     print('Hello! Let\'s explore some US bikeshare data!')
     print('-'*40)
@@ -45,7 +47,7 @@ def load_data(city,month,day):
             Chicago = Chicago[Chicago['Month']==month]
             Chicago = Chicago.reset_index(drop = True)
             Chicago['Day'] = Chicago['Start Time'].dt.day_name()
-            Chicago['Day'] = Chicago['Day'].str.lower()    
+            Chicago['Day'] = Chicago['Day'].str.lower()
             Chicago = Chicago[Chicago['Day']==day]
             Chicago = Chicago.reset_index(drop = True)
             df = Chicago
@@ -63,7 +65,7 @@ def load_data(city,month,day):
             Washington = Washington[Washington['Month']==month]
             Washington = Washington.reset_index(drop = True)
             Washington['Day'] = Washington['Start Time'].dt.day_name()
-            Washington['Day'] = Washington['Day'].str.lower()    
+            Washington['Day'] = Washington['Day'].str.lower()
             Washington = Washington[Washington['Day']==day]
             Washington = Washington.reset_index(drop = True)
             df = Washington
@@ -81,7 +83,7 @@ def load_data(city,month,day):
             New_York = New_York[New_York['Month']==month]
             New_York = New_York.reset_index(drop = True)
             New_York['Day'] = New_York['Start Time'].dt.day_name()
-            New_York['Day'] = New_York['Day'].str.lower()    
+            New_York['Day'] = New_York['Day'].str.lower()
             New_York = New_York[New_York['Day']==day]
             New_York = New_York.reset_index(drop = True)
             df = New_York
@@ -100,10 +102,10 @@ def filtered_data_time_stats(df):
     start_time = time.time()
     # display month name
     print("Month is: ",df['Month'].iloc[0])
-    print('-'*40)    
+    print('-'*40)
     # display the most common day of week
     print("Day of week is: ",df['Day'].iloc[0])
-    print('-'*40)    
+    print('-'*40)
     # display the most common start hour
     df['Hour'] = pd.DatetimeIndex(df['Start Time']).hour
     common_hour = pd.DataFrame(df['Hour'].value_counts())
@@ -174,7 +176,7 @@ def time_stats(df):
     common_month.column = cols
     common_month = common_month.head(1)
     print(common_month.Month.iloc[0])
-    print('-'*40)    
+    print('-'*40)
     # display the most common day of week
     print("Most common Day of week is: ")
     test = df[df.Month == common_month.Month.iloc[0]]
@@ -188,7 +190,7 @@ def time_stats(df):
     common_day.column = cols
     common_day = common_day.head(1)
     print(common_day.Day.iloc[0])
-    print('-'*40)    
+    print('-'*40)
     # display the most common start hour
     print("Most common Start Hour: ")
     test = test[test.Days == common_day.Day.iloc[0]]
@@ -224,8 +226,8 @@ def station_stats(df):
     common_Start_Station.columns = cols
     common_Start_Station = common_Start_Station.head(1)
     print(common_Start_Station['Start Station'].iloc[0])
-    print('-'*50)    
-    
+    print('-'*50)
+
     # display most commonly used end station
     print("Most commonly used end station is: ")
     common_End_Station = pd.DataFrame(df['End Station'].value_counts())
@@ -236,7 +238,7 @@ def station_stats(df):
     common_End_Station.columns = cols
     common_End_Station = common_End_Station.head(1)
     print(common_End_Station['End Station'].iloc[0])
-    print('-'*50) 
+    print('-'*50)
 
     # display most frequent combination of start station and end station trip
     print("Most Frequent combination of Start station and End station Trip is: ")
@@ -249,7 +251,7 @@ def station_stats(df):
     common_start_and_end_Station.column = cols
     common_start_and_end_Station = common_start_and_end_Station.head(1)
     print(common_start_and_end_Station['Common Start_and End Station'].iloc[0])
-    print('-'*50) 
+    print('-'*50)
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*50)
 
@@ -268,7 +270,7 @@ def trip_duration_stats(df):
     # display mean travel time
     print("Mean Travel Time is: ",df['Trip Duration'].mean()/3600," Hours")
     print('-'*40)
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -352,4 +354,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
