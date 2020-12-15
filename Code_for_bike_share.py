@@ -1,5 +1,6 @@
 # By: Faisal Algahtani
 # Updated Date 15/12/2020
+# Updated Date 15/12/2020
 
 import time
 import pandas as pd
@@ -165,7 +166,7 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     print('-'*40)
     start_time = time.time()
-    # display the most common month
+    # show the most common month
     print("Most common Month is: ")
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['Month'] = df['Start Time'].dt.month_name()
@@ -178,7 +179,7 @@ def time_stats(df):
     common_month = common_month.head(1)
     print(common_month.Month.iloc[0])
     print('-'*40)
-    # display the most common day of week
+    # show the most common day of week
     print("Most common Day of week is: ")
     test = df[df.Month == common_month.Month.iloc[0]]
     test = test.reset_index()
@@ -192,7 +193,8 @@ def time_stats(df):
     common_day = common_day.head(1)
     print(common_day.Day.iloc[0])
     print('-'*40)
-    # display the most common start hour
+
+    # show the most common start hour
     print("Most common Start Hour: ")
     test = test[test.Days == common_day.Day.iloc[0]]
     test = test.reset_index()
